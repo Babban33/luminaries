@@ -3,10 +3,11 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu } from "lucide-react"
+import { Menu, MoonIcon, SunIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import Image from "next/image"
+import { useTheme } from "next-themes"
 
 const navItems = [
     { name: "Home", href: "/" },
@@ -17,6 +18,7 @@ const navItems = [
 export function Navbar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
     const pathname = usePathname()
+    const { theme, setTheme } = useTheme()
 
     const NavLinks = () => (
         <>
@@ -44,6 +46,17 @@ export function Navbar() {
                     </div>
                 <div className="hidden md:flex items-center space-x-4">
                     <NavLinks />
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        aria-label="Toggle theme"
+                        className="rounded-full"
+                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                    >
+                        <SunIcon className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                        <MoonIcon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                        <span className="sr-only">Toggle theme</span>
+                    </Button>
                 </div>
                 <div className="md:hidden flex items-center">
                     <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>

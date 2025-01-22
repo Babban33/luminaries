@@ -1,5 +1,11 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import Link from "next/link"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+    title: "Home",
+    description: "Welcome to Luminaries, tech stack notes repository.",
+}
 
 export default function Home() {
     return (

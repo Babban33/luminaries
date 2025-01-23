@@ -32,7 +32,7 @@ export default function RootLayout({
         <div className="flex flex-col min-h-screen">
           <Navbar/>
           <main className="flex-grow">
-            <div className="min-w-screen mx-auto px-4">
+            <div className="min-w-screen mx-auto px-0 md:px-4">
               {children}
             </div>
           </main>
